@@ -1,0 +1,192 @@
+{
+	"name": "Day14",
+	"properties": {
+		"activities": [
+			{
+				"name": "copy_data_sql_csv",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "SqlServerSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"sink": {
+						"type": "ParquetSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "ParquetWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SqlServerTable1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DSbulkcsv",
+						"type": "DatasetReference"
+					}
+				]
+			},
+			{
+				"name": "SP_Auditlog",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "copy_data_sql_csv",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[auditloadstatus]",
+					"storedProcedureParameters": {
+						"dataread": {
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.dataread",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"errorid": {
+							"value": "",
+							"type": "String"
+						},
+						"errormessage": {
+							"value": "",
+							"type": "String"
+						},
+						"loadstatus": {
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.executionDetails[0].status\n",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"TableName": {
+							"value": {
+								"value": "@concat(pipeline().parameters.schemaname,'_',pipeline().parameters.tablename)\n",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SqlServer2",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "SP_Errorlog",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "copy_data_sql_csv",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[auditloadstatus]",
+					"storedProcedureParameters": {
+						"dataread": {
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"errorid": {
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"errormessage": {
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].message\n",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"loadstatus": {
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"TableName": {
+							"value": {
+								"value": "@activity('copy_data_sql_csv').output.errors[0].code\n",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SqlServer2",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"schemaname": {
+				"type": "string",
+				"defaultValue": "dbo"
+			},
+			"tablename": {
+				"type": "string",
+				"defaultValue": "auditcopylog"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-03-25T20:13:37Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

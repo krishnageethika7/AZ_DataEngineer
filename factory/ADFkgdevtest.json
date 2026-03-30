@@ -1,0 +1,9 @@
+{
+	"name": "ADFkgdevtest",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "014b5be1-f5be-4a09-864c-55efefb237f5",
+		"tenantId": "c57d429e-6ef1-411b-8d2b-58aaff4bb1f7"
+	}
+}

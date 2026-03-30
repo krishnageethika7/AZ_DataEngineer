@@ -1,0 +1,31 @@
+{
+	"name": "tgtest1",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Day13Multiplefilestest",
+					"type": "PipelineReference"
+				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "VALIDATE_EX",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Hour",
+				"interval": 3,
+				"startTime": "2026-03-23T17:45:00",
+				"endTime": "2026-03-27T17:45:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}

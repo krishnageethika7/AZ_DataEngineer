@@ -1,0 +1,44 @@
+{
+	"name": "StoreProc_SQL",
+	"properties": {
+		"activities": [
+			{
+				"name": "SP_PLSQL",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[InsertCustomers]",
+					"storedProcedureParameters": {
+						"Custid": {
+							"value": "001",
+							"type": "Int32"
+						},
+						"Firstname": {
+							"value": "Geethika",
+							"type": "String"
+						},
+						"Lastname": {
+							"value": "A",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_SqlServer2",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2026-03-30T15:19:13Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
