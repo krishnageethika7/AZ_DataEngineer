@@ -1,0 +1,78 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "ADFkgdevtest"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"LS_Dataset1_accountKey": {
+			"value": ""
+		},
+		"LS_SqlServer1_password": {
+			"value": ""
+		},
+		"LS_SqlServer2_password": {
+			"value": ""
+		},
+		"LS_Testforeach_accountKey": {
+			"value": ""
+		},
+		"LS_bulkcsv_accountKey": {
+			"value": ""
+		},
+		"LSoutput_accountKey": {
+			"value": ""
+		},
+		"LStest1_accountKey": {
+			"value": ""
+		},
+		"LStest2_accountKey": {
+			"value": ""
+		},
+		"LS_Dataset1_properties_typeProperties_url": {
+			"value": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LS_SqlServer1_properties_typeProperties_server": {
+			"value": "SURYAGEETHIKA\\SQLEXPRESS"
+		},
+		"LS_SqlServer1_properties_typeProperties_database": {
+			"value": "master"
+		},
+		"LS_SqlServer1_properties_typeProperties_userName": {
+			"value": "SuryaGeethika\\surya"
+		},
+		"LS_SqlServer2_properties_typeProperties_server": {
+			"value": "SURYAGEETHIKA\\SQLEXPRESS"
+		},
+		"LS_SqlServer2_properties_typeProperties_database": {
+			"value": "Achieve"
+		},
+		"LS_SqlServer2_properties_typeProperties_userName": {
+			"value": "visionboard"
+		},
+		"LS_Testforeach_properties_typeProperties_url": {
+			"value": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LS_bulkcsv_properties_typeProperties_url": {
+			"value": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LSoutput_properties_typeProperties_url": {
+			"value": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LStest1_properties_typeProperties_url": {
+			"value": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LStest2_properties_typeProperties_url": {
+			"value": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

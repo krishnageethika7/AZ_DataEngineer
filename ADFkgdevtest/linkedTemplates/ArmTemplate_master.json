@@ -1,0 +1,209 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "ADFkgdevtest"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"LS_Dataset1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Dataset1'"
+		},
+		"LS_SqlServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SqlServer1'"
+		},
+		"LS_SqlServer2_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SqlServer2'"
+		},
+		"LS_Testforeach_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_Testforeach'"
+		},
+		"LS_bulkcsv_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_bulkcsv'"
+		},
+		"LSoutput_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LSoutput'"
+		},
+		"LStest1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LStest1'"
+		},
+		"LStest2_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LStest2'"
+		},
+		"LS_Dataset1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LS_SqlServer1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "SURYAGEETHIKA\\SQLEXPRESS"
+		},
+		"LS_SqlServer1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "master"
+		},
+		"LS_SqlServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "SuryaGeethika\\surya"
+		},
+		"LS_SqlServer2_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "SURYAGEETHIKA\\SQLEXPRESS"
+		},
+		"LS_SqlServer2_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Achieve"
+		},
+		"LS_SqlServer2_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "visionboard"
+		},
+		"LS_Testforeach_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LS_bulkcsv_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LSoutput_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LStest1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"LStest2_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "ADFkgdevtest_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"LS_Dataset1_accountKey": {
+						"value": "[parameters('LS_Dataset1_accountKey')]"
+					},
+					"LS_Testforeach_accountKey": {
+						"value": "[parameters('LS_Testforeach_accountKey')]"
+					},
+					"LS_bulkcsv_accountKey": {
+						"value": "[parameters('LS_bulkcsv_accountKey')]"
+					},
+					"LSoutput_accountKey": {
+						"value": "[parameters('LSoutput_accountKey')]"
+					},
+					"LStest1_accountKey": {
+						"value": "[parameters('LStest1_accountKey')]"
+					},
+					"LStest2_accountKey": {
+						"value": "[parameters('LStest2_accountKey')]"
+					},
+					"LS_SqlServer1_password": {
+						"value": "[parameters('LS_SqlServer1_password')]"
+					},
+					"LS_SqlServer2_password": {
+						"value": "[parameters('LS_SqlServer2_password')]"
+					},
+					"LS_Dataset1_properties_typeProperties_url": {
+						"value": "[parameters('LS_Dataset1_properties_typeProperties_url')]"
+					},
+					"LS_Testforeach_properties_typeProperties_url": {
+						"value": "[parameters('LS_Testforeach_properties_typeProperties_url')]"
+					},
+					"LS_bulkcsv_properties_typeProperties_url": {
+						"value": "[parameters('LS_bulkcsv_properties_typeProperties_url')]"
+					},
+					"LSoutput_properties_typeProperties_url": {
+						"value": "[parameters('LSoutput_properties_typeProperties_url')]"
+					},
+					"LStest1_properties_typeProperties_url": {
+						"value": "[parameters('LStest1_properties_typeProperties_url')]"
+					},
+					"LStest2_properties_typeProperties_url": {
+						"value": "[parameters('LStest2_properties_typeProperties_url')]"
+					},
+					"LS_SqlServer1_properties_typeProperties_server": {
+						"value": "[parameters('LS_SqlServer1_properties_typeProperties_server')]"
+					},
+					"LS_SqlServer1_properties_typeProperties_database": {
+						"value": "[parameters('LS_SqlServer1_properties_typeProperties_database')]"
+					},
+					"LS_SqlServer1_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SqlServer1_properties_typeProperties_userName')]"
+					},
+					"LS_SqlServer2_properties_typeProperties_server": {
+						"value": "[parameters('LS_SqlServer2_properties_typeProperties_server')]"
+					},
+					"LS_SqlServer2_properties_typeProperties_database": {
+						"value": "[parameters('LS_SqlServer2_properties_typeProperties_database')]"
+					},
+					"LS_SqlServer2_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SqlServer2_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "ADFkgdevtest_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'ADFkgdevtest_ArmTemplate_0')]"
+			]
+		}
+	]
+}
