@@ -1,0 +1,25 @@
+{
+	"name": "TriggerStorevent",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "Day17",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/input30032026/blobs/input30032026/",
+			"blobPathEndsWith": "input30032026/movies.csv",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/90f552b9-0537-4037-a78b-410be944b25a/resourceGroups/Rgdevtest1/providers/Microsoft.Storage/storageAccounts/adlsntest2",
+			"events": [
+				"Microsoft.Storage.BlobDeleted"
+			]
+		}
+	}
+}
