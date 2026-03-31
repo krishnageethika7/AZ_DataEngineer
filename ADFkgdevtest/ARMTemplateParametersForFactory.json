@@ -67,6 +67,9 @@
 		},
 		"LStest2_properties_typeProperties_url": {
 			"value": "https://adlsntest2.dfs.core.windows.net/"
+		},
+		"TriggerStorevent_properties_typeProperties_scope": {
+			"value": "/subscriptions/90f552b9-0537-4037-a78b-410be944b25a/resourceGroups/Rgdevtest1/providers/Microsoft.Storage/storageAccounts/adlsntest2"
 		}
 	}
 }
