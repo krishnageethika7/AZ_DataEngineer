@@ -1,0 +1,9 @@
+{
+	"name": "dkdevtest1",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7f5a2358-2b29-4a66-a4bf-179732fe8d2f",
+		"tenantId": "c57d429e-6ef1-411b-8d2b-58aaff4bb1f7"
+	}
+}
