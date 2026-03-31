@@ -1,5 +1,5 @@
 {
-	"name": "tgtest1",
+	"name": "TGschedule1",
 	"properties": {
 		"annotations": [],
 		"runtimeState": "Started",
@@ -15,15 +15,21 @@
 					"referenceName": "VALIDATE_EX",
 					"type": "PipelineReference"
 				}
+			},
+			{
+				"pipelineReference": {
+					"referenceName": "PL_SQL",
+					"type": "PipelineReference"
+				}
 			}
 		],
 		"type": "ScheduleTrigger",
 		"typeProperties": {
 			"recurrence": {
-				"frequency": "Hour",
-				"interval": 3,
+				"frequency": "Minute",
+				"interval": 15,
 				"startTime": "2026-03-23T17:45:00",
-				"endTime": "2026-03-27T17:45:00",
+				"endTime": "2026-03-31T17:45:00",
 				"timeZone": "India Standard Time"
 			}
 		}
